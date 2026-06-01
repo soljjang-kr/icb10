@@ -1,0 +1,114 @@
+# ==============================================================================
+# 파이썬 데이터 분석용 .gitignore (Python Data Analysis)
+# ==============================================================================
+
+# 가상환경 (사용자 규칙에 따라 uv 사용 및 .venv 권장)
+.venv/
+venv/
+env/
+.env/
+
+# 바이트 컴파일 파일
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C 확장 파일
+*.so
+
+# 패키징 및 배포
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 테스트 및 커버리지 레포트
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook 관련
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# 데이터 파일 (일반적으로 용량이 커서 git으로 추적하지 않음)
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.xlsm
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.db
+*.sqlite
+
+# 데이터 및 모델 폴더 (특정 분석 프로젝트에서 자주 사용되는 폴더명)
+# 만약 폴더 자체는 유지하고 내용물만 무시하고 싶다면: 폴더명/* 형태로 사용하고 .gitkeep 추가
+# data/
+# dataset/
+# datasets/
+# raw_data/
+# processed_data/
+# models/
+# weights/
+
+# 모델 파일
+*.pt
+*.pth
+*.keras
+*.onnx
+*.pb
+
+# 로그 파일
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE 및 에디터 설정
+.idea/
+.vscode/
+.spyderproject
+.spyproject
+.ropeproject
+
+# 타입 체크 캐시 (mypy 등)
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# 환경 변수 파일
+.env
+.env.local
+
+# Mac OS 시스템 파일
+.DS_Store
