@@ -112,3 +112,9 @@ dmypy.json
 
 # Mac OS 시스템 파일
 .DS_Store
+
+# 모든 숨김 파일 및 폴더 무시
+.*
+# 예외 처리: gitignore 및 에이전트 설정 폴더는 추적 유지
+!/.gitignore
+!/.agents/
