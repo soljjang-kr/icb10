@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+
+if [ "${GIT_AUTO_PUSH_DISABLED:-}" = "1" ]; then
+  exit 0
+fi
+
+branch="$(git symbolic-ref --quiet --short HEAD || true)"
+if [ -z "$branch" ]; then
+  exit 0
+fi
+
+remote="${GIT_AUTO_PUSH_REMOTE:-origin}"
+
+if git rev-parse --verify --quiet "$remote/$branch" >/dev/null; then
+  git push "$remote" "$branch"
+else
+  git push -u "$remote" "$branch"
+fi

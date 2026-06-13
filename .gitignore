@@ -117,6 +117,8 @@ dmypy.json
 .*
 # 예외 처리: gitignore 및 에이전트 설정 폴더는 추적 유지
 !/.gitignore
+!/.githooks/
+!/.githooks/**
 # Do not commit hidden folders/files or local configuration.
 .agents/
 .codex/
