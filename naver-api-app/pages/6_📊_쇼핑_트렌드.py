@@ -12,7 +12,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from datetime import datetime, timedelta
-from utils.naver_api import fetch_datalab_shopping
+from utils.naver_api import fetch_datalab_shopping, render_api_sidebar
 
 # 네이버 쇼핑 표준 대분류 카테고리 ID 매핑
 CATEGORIES = {
@@ -52,12 +52,11 @@ def main():
     st.markdown("네이버 데이터랩 쇼핑인사이트 API를 조회하여 카테고리별 클릭량 트렌드를 다각도로 분석합니다.")
     st.markdown("---")
 
-    # API 키 확인
-    client_id = st.session_state.get("naver_client_id", "")
-    client_secret = st.session_state.get("naver_client_secret", "")
+    # API 키 확인 (사이드바 렌더링)
+    client_id, client_secret = render_api_sidebar()
 
     if not client_id or not client_secret:
-        st.warning("⚠️ 메인 페이지(app.py)에서 **Naver API Key**를 먼저 입력해 주세요.")
+        st.warning("⚠️ 왼쪽 사이드바에서 **Naver API Key**를 먼저 입력해 주세요.")
         return
 
     # 분석 설정 UI

@@ -14,7 +14,7 @@ import pandas as pd
 import plotly.express as px
 import re
 from urllib.parse import urlparse
-from utils.naver_api import fetch_search_api
+from utils.naver_api import fetch_search_api, render_api_sidebar
 
 
 def clean_html(raw_html):
@@ -44,12 +44,11 @@ def main():
     st.markdown("네이버 뉴스 검색 API를 활용하여 검색 키워드와 관련된 뉴스 보도 현황 및 미디어 동향을 분석합니다.")
     st.markdown("---")
 
-    # API 키 확인
-    client_id = st.session_state.get("naver_client_id", "")
-    client_secret = st.session_state.get("naver_client_secret", "")
+    # API 키 확인 (사이드바 렌더링)
+    client_id, client_secret = render_api_sidebar()
 
     if not client_id or not client_secret:
-        st.warning("⚠️ 메인 페이지(app.py)에서 **Naver API Key**를 먼저 입력해 주세요.")
+        st.warning("⚠️ 왼쪽 사이드바에서 **Naver API Key**를 먼저 입력해 주세요.")
         return
 
     # 분석 설정 UI
