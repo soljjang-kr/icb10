@@ -45,6 +45,19 @@ def load_local_env() -> None:
 load_local_env()
 
 
+def get_secret_value(key: str, default: str = "") -> str:
+    """Read a value from Streamlit secrets first, then environment variables."""
+    try:
+        value = st.secrets.get(key, default)
+    except Exception:
+        value = default
+
+    if value:
+        return str(value)
+
+    return os.getenv(key, default)
+
+
 def render_api_sidebar():
     """
     모든 페이지의 사이드바에 공통으로 네이버 API Key 입력창을 렌더링하고
@@ -53,8 +66,8 @@ def render_api_sidebar():
     st.sidebar.title("🔑 API 설정")
     st.sidebar.markdown("네이버 개발자 센터에서 발급받은 API 키를 입력해 주세요.")
     
-    env_client_id = os.getenv("NAVER_CLIENT_ID", "")
-    env_client_secret = os.getenv("NAVER_CLIENT_SECRET", "")
+    env_client_id = get_secret_value("NAVER_CLIENT_ID")
+    env_client_secret = get_secret_value("NAVER_CLIENT_SECRET")
 
     if not st.session_state.get("naver_client_id"):
         st.session_state.naver_client_id = env_client_id
