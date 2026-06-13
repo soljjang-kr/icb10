@@ -220,6 +220,15 @@ def fetch_search_api(
         response.raise_for_status()
         return response.json()
     except requests.exceptions.HTTPError as e:
+        if e.response.status_code in (401, 403):
+            return {
+                "error": (
+                    "네이버 검색 API 인증에 실패했습니다. "
+                    "네이버 개발자센터 > Application > 내 애플리케이션 > API 설정에서 "
+                    "사용 API에 '검색'이 추가되어 있는지 확인해 주세요. "
+                    f"원본 응답: HTTP {e.response.status_code} - {e.response.text}"
+                )
+            }
         return {"error": f"HTTP 오류: {e.response.status_code} - {e.response.text}"}
     except requests.exceptions.RequestException as e:
         return {"error": f"요청 오류: {str(e)}"}
