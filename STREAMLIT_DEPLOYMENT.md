@@ -2,6 +2,20 @@
 
 이 프로젝트의 Streamlit 앱은 `naver-api-app` 폴더 안에 있습니다.
 
+## 현재 배포 주소
+
+- Streamlit 앱: https://i3sjkmmehw83ms9h2taqua.streamlit.app/
+
+## 현재 프로젝트 작업 내역
+
+- 네이버 Open API 기반 Streamlit 대시보드 앱을 `naver-api-app`에 구성했습니다.
+- 검색어 트렌드, 쇼핑 검색, 블로그 검색, 카페글 검색, 뉴스 검색, 쇼핑인사이트 탭을 구현했습니다.
+- 네이버 API 키는 로컬 `.env`와 Streamlit Cloud Secrets 양쪽에서 읽을 수 있도록 처리했습니다.
+- Streamlit Cloud 배포 환경에서는 `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` 값을 Secrets에 등록해 사용하도록 정리했습니다.
+- 카페, 뉴스, 쇼핑 트렌드 페이지도 공통 API 설정 사이드바를 사용하도록 수정해 직접 페이지 접속 시에도 API 키가 적용되게 했습니다.
+- 검색 API 인증 오류가 발생할 때 네이버 개발자센터의 `검색` API 권한 누락 여부를 확인하도록 안내 메시지를 개선했습니다.
+- 커밋 이후 자동으로 GitHub 원격 저장소에 푸시되도록 `.githooks/post-commit` 훅을 설정했습니다.
+
 ## 1. GitHub에 push
 
 Streamlit Community Cloud는 GitHub 저장소를 기준으로 앱을 배포합니다.
